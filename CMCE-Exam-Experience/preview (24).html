@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMCE ITIM Session 6 Mock Test</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    background:#f3f4f6;
+    margin:0;
+    padding:20px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+h1,h2{
+    text-align:center;
+    color:#1d4ed8;
+}
+
+.question{
+    margin-top:20px;
+    padding:15px;
+    background:#f9fafb;
+    border-left:5px solid #2563eb;
+    border-radius:8px;
+}
+
+label{
+    display:block;
+    margin:8px 0;
+    cursor:pointer;
+}
+
+.easy{
+    color:green;
+    font-weight:bold;
+}
+
+.medium{
+    color:orange;
+    font-weight:bold;
+}
+
+.hard{
+    color:red;
+    font-weight:bold;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    margin-top:30px;
+    border:none;
+    border-radius:8px;
+    background:#2563eb;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1e40af;
+}
+
+#result{
+    display:none;
+    margin-top:30px;
+    padding:20px;
+    border-radius:10px;
+    background:#ecfdf5;
+}
+
+.correct{
+    color:green;
+    font-weight:bold;
+}
+
+.wrong{
+    color:red;
+    font-weight:bold;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>CMCE ITIM MOCK TEST</h1>
+<h2>Session 6 - Virtualization</h2>
+
+<form id="quizForm">
+
+<script>
+
+const questions = [
+
+/* EASY 14 */
+
+["Virtualization means:",["Multiple VMs on one machine","Formatting disk","Installing antivirus","Creating subnet"],"A","easy"],
+
+["Hypervisor is:",["Compiler","VM Manager","Firewall","Database"],"B","easy"],
+
+["Type 1 hypervisor runs:",["On host OS","Directly on hardware","Inside browser","Inside Docker"],"B","easy"],
+
+["VirtualBox is:",["Type 1","Type 2","Cloud service","Database"],"B","easy"],
+
+["Snapshot is used for:",["Rollback point","Routing","Encryption","DHCP"],"A","easy"],
+
+["Clone means:",["VM deletion","Exact VM copy","Compression","Disk partition"],"B","easy"],
+
+["Template is:",["Master VM image","Firewall","Switch","Patch file"],"A","easy"],
+
+["Type 1 hypervisor is also called:",["Hosted","Bare Metal","Portable","Cloud Native"],"B","easy"],
+
+["Which is Type 1 hypervisor?",["VMware ESXi","VirtualBox","VMware Workstation","Docker"],"A","easy"],
+
+["Para virtualization provides:",["Better performance","No virtualization","Disk formatting","Lower speed"],"A","easy"],
+
+["Which hypervisor is slower?",["Type 1","Type 2","KVM","Xen"],"B","easy"],
+
+["Cloud computing mainly depends on:",["Virtualization","MS Paint","Compiler","Gaming"],"A","easy"],
+
+["Hyper-V is:",["Type 1 Hypervisor","Database","Container","Firewall"],"A","easy"],
+
+["Snapshots are useful before:",["Software updates","Typing","Printing","Formatting"],"A","easy"],
+
+/* MEDIUM 15 */
+
+["Which virtualization type requires modified guest OS?",["Para Virtualization","Hardware Virtualization","Full Virtualization","Desktop Virtualization"],"A","medium"],
+
+["Hardware Virtualization means:",["Complete hardware simulation","Only storage sharing","Only networking","Only CPU sharing"],"A","medium"],
+
+["Which is suitable for enterprise data centers?",["Type 1","Type 2","Desktop Hypervisor","Browser VM"],"A","medium"],
+
+["VMware Workstation belongs to:",["Type 2","Type 1","Container","Cloud"],"A","medium"],
+
+["Type 2 hypervisor architecture includes:",["Host OS","Bare hardware only","Router","Load balancer"],"A","medium"],
+
+["Which feature helps fast VM deployment?",["Templates","Formatting","Defragmentation","DHCP"],"A","medium"],
+
+["Rollback after failed patch uses:",["Snapshot","Clone","Firewall","DNS"],"A","medium"],
+
+["Which creates an exact duplicate VM?",["Clone","Snapshot","Patch","Restore Point"],"A","medium"],
+
+["Virtualization improves:",["Hardware utilization","Dust accumulation","Cable length","Fan speed"],"A","medium"],
+
+["Which hypervisor type is more secure?",["Type 1","Type 2","Desktop OS","Browser"],"A","medium"],
+
+["A developer installing Ubuntu inside Windows laptop uses:",["Type 2","Type 1","Bare Metal","Kubernetes"],"A","medium"],
+
+["Templates mainly contain:",["Preconfigured OS","Encrypted passwords","BIOS firmware","Network cables"],"A","medium"],
+
+["Hypervisor is also called:",["VMM","DNS","ACL","IAM"],"A","medium"],
+
+["Which technology enables multiple isolated OS environments?",["Virtualization","Compilation","Routing","Hashing"],"A","medium"],
+
+["Type 1 hypervisor directly communicates with:",["Hardware","Browser","Switch","Proxy"],"A","medium"],
+
+/* HARD 10 */
+
+["A cloud provider needs maximum performance and isolation for thousands of VMs. Best choice?",["Type 1 Hypervisor","Type 2 Hypervisor","Desktop VM","Browser VM"],"A","hard"],
+
+["Admin wants to restore VM exactly to previous working state after failed update. Which feature?",["Snapshot","Clone","Template","Patch"],"A","hard"],
+
+["A company creates standard Ubuntu image with Docker and Git preinstalled for all developers. This is:",["Template","Clone","Snapshot","Patch"],"A","hard"],
+
+["A guest OS is modified to communicate efficiently with hypervisor for improved performance. Which virtualization?",["Para Virtualization","Hardware Virtualization","Containerization","Desktop Sharing"],"A","hard"],
+
+["Developer installs VirtualBox on Windows host machine to run Kali Linux. Which architecture?",["Hardware → Host OS → Hypervisor → VM","Hardware → Hypervisor → VM","VM → Host OS → Hypervisor","Cloud → Hypervisor → VM"],"A","hard"],
+
+["Which feature consumes less storage compared to creating full duplicate VM?",["Snapshot","Clone","Template","Partition"],"A","hard"],
+
+["An enterprise wants centralized VM deployment with predefined configuration and applications. Best approach?",["Templates","Manual Installation","Snapshots","Formatting"],"A","hard"],
+
+["Which virtualization method gives better performance but requires guest OS modification?",["Para Virtualization","Hardware Virtualization","Full Cloning","Containerization"],"A","hard"],
+
+["A student running VMware Workstation on Ubuntu host is using:",["Type 2 Hypervisor","Type 1 Hypervisor","Bare Metal Hypervisor","Cloud Hypervisor"],"A","hard"],
+
+["Which virtualization concept enables rapid testing by creating temporary copies of systems?",["Cloning","Defragmentation","Subnetting","Routing"],"A","hard"]
+
+];
+
+document.write(questions.map((q,index)=>`
+
+<div class="question">
+
+<p>
+Q${index+1}. ${q[0]}
+<span class="${q[3]}">(${q[3].toUpperCase()})</span>
+</p>
+
+<label><input type="radio" name="q${index+1}" value="A"> A. ${q[1][0]}</label>
+<label><input type="radio" name="q${index+1}" value="B"> B. ${q[1][1]}</label>
+<label><input type="radio" name="q${index+1}" value="C"> C. ${q[1][2]}</label>
+<label><input type="radio" name="q${index+1}" value="D"> D. ${q[1][3]}</label>
+
+</div>
+
+`).join(""));
+
+</script>
+
+<button type="button" onclick="submitQuiz()">Submit Test</button>
+
+</form>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function submitQuiz(){
+
+const answers = {
+
+1:"A",2:"B",3:"B",4:"B",5:"A",
+6:"B",7:"A",8:"B",9:"A",10:"A",
+11:"B",12:"A",13:"A",14:"A",
+
+15:"A",16:"A",17:"A",18:"A",19:"A",
+20:"A",21:"A",22:"A",23:"A",24:"A",
+25:"A",26:"A",27:"A",28:"A",29:"A",
+
+30:"A",31:"A",32:"A",33:"A",34:"A",
+35:"A",36:"A",37:"A",38:"A",39:"A"
+
+};
+
+let score = 0;
+let output = "<h2>Test Result</h2>";
+
+for(let i=1;i<=39;i++){
+
+let userAns = document.querySelector(`input[name="q${i}"]:checked`);
+
+if(userAns){
+
+if(userAns.value === answers[i]){
+score++;
+output += `<p class="correct">Q${i}: Correct ✅</p>`;
+}else{
+output += `<p class="wrong">Q${i}: Wrong ❌ | Correct Answer: ${answers[i]}</p>`;
+}
+
+}else{
+output += `<p class="wrong">Q${i}: Not Attempted ❌ | Correct Answer: ${answers[i]}</p>`;
+}
+
+}
+
+output += `<h2>Your Score: ${score}/39</h2>`;
+
+if(score >= 32){
+output += "<h3>Excellent Performance 🔥</h3>";
+}else if(score >= 22){
+output += "<h3>Good Performance 👍</h3>";
+}else{
+output += "<h3>Need More Revision 📚</h3>";
+}
+
+document.getElementById("result").style.display = "block";
+document.getElementById("result").innerHTML = output;
+
+window.scrollTo(0, document.body.scrollHeight);
+
+}
+
+</script>
+
+</body>
+</html>
