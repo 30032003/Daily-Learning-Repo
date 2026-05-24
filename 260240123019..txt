@@ -1,0 +1,247 @@
+1.Q-->Employee Performance Dictionary Program:
+````````````````````````````````````````````````
+employees = {
+    "Aarav": [78, 85, 90],
+    "Diya": [88, 70, 81],
+    "Kabir": [67, 72, 70],
+    "Meera": [92, 89, 95]
+}
+
+# Print employee ratings
+
+for name, ratings in employees.items():
+    print(name, "->", ratings)
+
+# Total and Average
+
+for name, ratings in employees.items():
+
+    total = sum(ratings)
+
+    average = total / len(ratings)
+
+    print("\nEmployee:", name)
+
+    print("Total:", total)
+
+    print("Average:", average)
+
+# Update rating
+
+employee_name = input("\nEnter employee name: ")
+
+if employee_name in employees:
+
+    new_rating = int(input("Enter new 2nd rating: "))
+
+    employees[employee_name][1] = new_rating
+
+    print("Updated Ratings:", employees[employee_name])
+
+else:
+    print("Employee not found")
+
+# Grade function
+
+def get_grade(avg):
+
+    if avg >= 80:
+        return "Outstanding"
+
+    elif avg >= 65:
+        return "Good"
+
+    elif avg >= 50:
+        return "Average"
+
+    else:
+        return "Poor"
+
+# Display grade
+
+for name, ratings in employees.items():
+
+    avg = sum(ratings) / len(ratings)
+
+    grade = get_grade(avg)
+
+    print(name, "->", grade)
+
+# Save report
+
+file = open("performance_report.txt", "w")
+
+for name, ratings in employees.items():
+
+    total = sum(ratings)
+
+    avg = total / len(ratings)
+
+    grade = get_grade(avg)
+
+    file.write(f"{name} {ratings} Total={total} Average={avg} Grade={grade}\n")
+
+file.close()
+
+print("\nReport saved successfully")
+
+# Count lines and words
+
+file = open("performance_report.txt", "r")
+
+content = file.readlines()
+
+line_count = len(content)
+
+word_count = 0
+
+for line in content:
+
+    words = line.split()
+
+    word_count += len(words)
+
+file.close()
+
+print("Number of lines:", line_count)
+
+print("Number of words:", word_count)
+
+
+
+2.Q Inventory Dictionary Program:
+`````````````````````````````````````````
+import re
+
+inventory = {
+    "Laptop": [10, 50000],
+    "Mouse": [25, 700],
+    "Keyboard": [15, 1200],
+    "Monitor": [8, 9000]
+}
+
+# Print inventory details
+
+for item, details in inventory.items():
+
+    quantity = details[0]
+
+    price = details[1]
+
+    print(item, "-> Quantity:", quantity, "Price:", price)
+
+# Calculate stock value
+
+total_stock_value = 0
+
+for item, details in inventory.items():
+
+    quantity = details[0]
+
+    price = details[1]
+
+    stock_value = quantity * price
+
+    total_stock_value += stock_value
+
+    print(item, "Stock Value =", stock_value)
+
+print("\nTotal Stock Value =", total_stock_value)
+
+# Update quantity
+
+item_name = input("\nEnter item name: ")
+
+if item_name in inventory:
+
+    new_quantity = int(input("Enter new quantity: "))
+
+    inventory[item_name][0] = new_quantity
+
+    print("Updated Details:", inventory[item_name])
+
+else:
+
+    print("Item not found")
+
+# Function for stock status
+
+def get_stock_status(quantity):
+
+    if quantity < 8:
+        return "Critical Stock"
+
+    elif quantity <= 20:
+        return "Low Stock"
+
+    elif quantity <= 50:
+        return "Adequate Stock"
+
+    else:
+        return "High Stock"
+
+# Display stock status
+
+for item, details in inventory.items():
+
+    quantity = details[0]
+
+    status = get_stock_status(quantity)
+
+    print(item, "->", status)
+
+# Save report to file
+
+file = open("store_report.txt", "w")
+
+for item, details in inventory.items():
+
+    quantity = details[0]
+
+    price = details[1]
+
+    stock_value = quantity * price
+
+    status = get_stock_status(quantity)
+
+    file.write(f"{item} Quantity={quantity} Price={price} StockValue={stock_value} Status={status}\n")
+
+file.close()
+
+print("\nReport saved successfully")
+
+# Count lines and words
+
+file = open("store_report.txt", "r")
+
+content = file.readlines()
+
+line_count = len(content)
+
+word_count = 0
+
+for line in content:
+
+    words = line.split()
+
+    word_count += len(words)
+
+file.close()
+
+print("Number of lines:", line_count)
+
+print("Number of words:", word_count)
+
+# Regex validation
+
+item_name = input("\nEnter item name for validation: ")
+
+pattern = "^[A-Za-z ]+$"
+
+if re.match(pattern, item_name):
+
+    print("Valid Item Name")
+
+else:
+
+    print("Invalid Item Name")
